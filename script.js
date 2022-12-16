@@ -47,11 +47,9 @@ jQuery(document.body).on('keypress', function(event){
 function deslogar(){
     document.getElementById('nameUser').classList.add('d-none');
     document.getElementById('btnLogout').classList.add('d-none');
-
     document.getElementById('name').classList.remove('d-none');
     document.getElementById('password').classList.remove('d-none');
     document.getElementById('btnLogin').classList.remove('d-none');
-
     document.getElementById('new_task').classList.add('d-none');
 }
 
@@ -64,7 +62,8 @@ function saveTask() {
     taskPriority    = $('#task_priority').val();
     taskStatus      = $('#task_status').val();
 
-    var validate = this.formValidate(taskName, taskDate, taskPriority, taskStatus)
+    var statusId = taskStatus;
+    var validate = this.formValidate(taskName, taskDate, taskPriority, taskStatus);
     this.formatInputs(taskDate, taskPriority, taskStatus);
 
     var taskCard = 
@@ -99,9 +98,31 @@ function saveTask() {
 
 
     if (validate) {
-        $('#do_card_content').append(taskCard);
+        this.setTaskCard(statusId, taskCard);
     } 
 }
+
+function setTaskCard(statusId, taskCard) {
+    var card;
+
+    switch(statusId) {
+        case '1':
+            card = $('#do_card_content').append(taskCard);
+            break;
+        case '2':
+            card = $('#doing_card_content').append(taskCard);
+            break;
+        case '3': 
+            card = $('#done_card_content').append(taskCard);
+            break;
+        default:
+            alert('ERRO');
+            break;
+    }
+
+    return card;
+}
+
 
 function formValidate(taskName, taskDate, taskPriority, taskStatus){
     var result = true;
