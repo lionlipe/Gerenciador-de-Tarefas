@@ -1,13 +1,12 @@
-//VARIÁVEIS GLOBAIS
-
-var taskId = 0;   
-var taskIdForm;      
+// VARIAVEIS GLOBAIS
+var taskId = 0;
+var taskIdForm;         
 var taskName;       
 var taskResponsible;
 var taskDescription;
-var taskDate;        
+var taskDate;       
 var taskPriority;   
-var taskStatus; 
+var taskStatus;
 
 this.setTaskId();
 
@@ -16,20 +15,17 @@ function setTaskId() {
     $('#task_id').val(this.taskId);
 }
 
-
-
-
 function logar() {
-    const usuario = 'Cafu';
-    const senha = 'escova';
-    
-    var name = document.getElementById('name').value;
+    const usuario = 'Marcus';
+    const senha = '123';
+
+    var name = document.getElementById('name').value;    
     var pass = document.getElementById('password').value;
 
-    if (usuario === name && senha === pass) {
+    if (usuario === name && senha === pass) {    
         var nameUser = document.getElementById('nameUser');
         nameUser.textContent = name;
-
+        
         document.getElementById('name').classList.add('d-none');
         document.getElementById('password').classList.add('d-none');
         document.getElementById('btnLogin').classList.add('d-none');
@@ -43,23 +39,25 @@ function logar() {
     } else {
         document.getElementById('name').style.border = "solid 2px red";
         document.getElementById('password').style.border = "solid 2px red";
-        alert('Usuário ou senha inválido.');
+        alert('Usuário ou senha incorretos.')
     }
 }
 
 jQuery(document.body).on('keypress', function(event){
     if(event.keyCode === 13) {
         event.preventDefault();
-        $('#btnLogin').trigger("click");
-    }
+        $('#btnLogin').trigger('click');
+    }    
 });
 
-function deslogar(){
-    document.getElementById('nameUser').classList.add('d-none');
+function deslogar() {
+    document.getElementById('nameUser').classList.add('d-none');    
     document.getElementById('btnLogout').classList.add('d-none');
+
     document.getElementById('name').classList.remove('d-none');
     document.getElementById('password').classList.remove('d-none');
     document.getElementById('btnLogin').classList.remove('d-none');
+
     document.getElementById('new_task').classList.add('d-none');
 }
 
@@ -73,51 +71,43 @@ function saveTask() {
     taskStatus      = $('#task_status').val();
 
     var statusId = taskStatus;
+    var taskPriorityId = taskPriority;
+
     var validate = this.formValidate(taskName, taskDate, taskPriority, taskStatus);
     this.formatInputs(taskDate, taskPriority, taskStatus);
 
-    var taskCard = 
-    " <div class='card mb-4 text-left p-3 border-0' id='" + taskId +"'> " +
-    " <div class='action-icon'> " + 
-    "       <i class='fa fa-pencil pe-2'><i/>"
-    "       <i calss='fa fa-trash-can onclick=deleteTask("+ taskId +")></i> " +
-    "   </div>" +
-    "   <div class='pb-3'> " +
-    "       <a href='#' class='text-decoration-none' id='name'> " +
-                taskName + 
-    "       </a>" +
-    "   </div>" +
-    
+    var taskCard =
+    " <div class='card mb-4 text-left p-3 border-0'> " +
+    "   <input class='d-none' id='id_card_"+ taskId +"' value="+ taskId +"> " +
+    "   <div class='d-flex align-items-center justify-content-between pb-3'>" +
+    "       <div class=''> " +
+    "           <a href='#' class='text-decoration-none'>" + taskName + "</a> " +
+    "           <input class='d-none' id='name_"+ taskId +"' value='" + taskName + "'> " +
+    "       </div> " +
+    "       <div class='action-icon'>" +
+    "           <i class='fa fa-pencil pe-2' data-bs-toggle='modal' data-bs-target='#modal_edit_task' onclick=editTask("+ taskId +")></i>" +
+    "           <i class='fa fa-trash-can' data-bs-toggle='modal' data-bs-target='#modal_delete_task' onclick='deleteTask("+ taskId +")'></i>" +
+    "       </div>" +
+    "   </div> " +
     "   <div class='pb-3 d-none'> " +
-    "       <a href='#' class='' id='description'> " +
-                taskDescription + 
-    "       </a>" +
-    "   </div>" +
-     
-    " <div class='pb-2'> " +
-    "       <i class='fa fa-calendar pe-2' id='date'></i> " +
-                taskDate + 
-    "   </div>" +
-    " <div class='pb-3'> " +
-    "       <i  class='fa fa-user pe-2' id='responsible'></i> " +
-                taskResponsible + 
-    "   </div>" +
-    " <div id='priority'> " +
-                taskPriority + 
-    "   </div>" +
-    " <div id='status' class='d-none'> " +
-                taskStatus + 
-    "   </div>" +
+    "       <input id='description_"+ taskId +"' value='" +taskDescription + "'> " +
+    "   </div> " +
+    "   <div class='pb-2'> " +
+    "       <i class='fa fa-calendar pe-2'></i> " +taskDate +"   </div> " +
+    "       <input class='d-none' id='date_"+ taskId +"' value="+ taskDate +"> " +
+    "   <div class='pb-3'> " +
+    "       <i class='fa fa-user pe-2'></i> " + taskResponsible +
+    "       <input class='d-none' id='responsible_"+ taskId +"' value='" + taskResponsible + "'> " +
+    "   </div> " +
+    "   <div> " + taskPriority +"   </div> " +
+    "   <input id='priority_"+ taskId +"' value='"+ taskPriorityId +"' class='d-none'> " +
+    "   <input id='status_"+ taskId +"' value='"+ statusId +"' class='d-none'> " +
     " </div>";
 
-
     if (validate) {
-        this.setTaskCard(statusId, taskCard);
-    } 
-    //this.clearFields();
-
+        this.setTaskCard(statusId, taskCard)
+    }
     this.setTaskId();
-
 
 }
 
@@ -131,7 +121,7 @@ function setTaskCard(statusId, taskCard) {
         case '2':
             card = $('#doing_card_content').append(taskCard);
             break;
-        case '3': 
+        case '3':
             card = $('#done_card_content').append(taskCard);
             break;
         default:
@@ -142,17 +132,16 @@ function setTaskCard(statusId, taskCard) {
     return card;
 }
 
-
-function formValidate(taskName, taskDate, taskPriority, taskStatus){
+function formValidate(taskName, taskDate, taskPriority, taskStatus) {
     var result = true;
 
     if (taskName === '') {
-        alert('Digite um nome para a tarefa');
+        alert('Digite um nome para tarefa');
         result = false;
     }
 
     if (taskDate === '') {
-        alert('Digite uma data para a tarefa');
+        alert('Digite uma data para tarefa');
         result = false;
     }
 
@@ -162,21 +151,20 @@ function formValidate(taskName, taskDate, taskPriority, taskStatus){
     }
 
     if (taskStatus === '') {
-        alert('informe um status');
+        alert('Informe um status');
         result = false;
     }
 
-    return result;
+   return result;
 }
-
 
 function formatInputs(taskDate, taskPriority, taskStatus) {
-    this.taskDate = taskDate.split('-').reverse().join('/');
+    this.taskDate     = taskDate.split('-').reverse().join('/');
     this.taskPriority = this.getPriorityName(taskPriority);
-    this.taskStatus = this.getStatusName(taskStatus);
+    this.taskStatus   = this.getStatusName(taskStatus);
 }
 
-//função para pegar texto da prioridade
+// Função para pegar texto da prioridade
 function getPriorityName(idPriority) {
     var priorityName;
     var classColor;
@@ -184,15 +172,15 @@ function getPriorityName(idPriority) {
     switch(idPriority) {
         case '1':
             priorityName = 'Baixa';
-            classColor = 'lowPriority';
+            classColor   = 'lowPriority';
             break;
         case '2':
-            priorityName = 'Média';
-            classColor = 'mediumPriority';
+            priorityName = 'Media';
+            classColor   = 'mediumPriority';
             break;
         case '3':
             priorityName = 'Alta';
-            classColor = 'highPriority';
+            classColor   = 'highPriority';
             break;
         default:
             priorityName = 'Não definida';
@@ -205,12 +193,12 @@ function getPriorityName(idPriority) {
 function getStatusName(taskStatus) {
     switch(taskStatus) {
         case '1':
-            return 'Fazer';
+            return 'Fazer';            
         case '2':
-            return 'Fazendo';
+            return 'Fazendo';            
         case '3':
             return 'Finalizada';
         default:
-            return 'Não definida';
+            return 'Não definido';
     }
 }
