@@ -161,6 +161,109 @@
         </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modal_delete_task" 
+    tabindex="-1" 
+    aria-labelledby="exampleModalLabel" 
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">            
+            <h1 class="modal-title fs-5" 
+                id="exampleModalLabel">
+                <i class="fa fa-trash px-2"></i>
+                Remover tarefa
+            </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body container-fluid">        
+            <h6>Deseja remover a tarefa <b><span id="idTask"></span></b> realmente ?</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" onclick="confirmDelete('S')" 
+            class="btn btn-outline-primary">
+                Remover
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal_edit_task" 
+    tabindex="-1" 
+    aria-labelledby="exampleModalLabel" 
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">            
+            <h1 class="modal-title fs-5" 
+                id="exampleModalLabel">
+                <i class="fa fa-edit px-2"></i>
+                Editar tarefa
+            </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body container-fluid">        
+            <div class="row">
+                
+                <div class="col-md-2 mb-3">
+                    <label for="task_id_edit" class="form-label">&nbsp;</label>
+                    <input type="text" 
+                    disabled 
+                    class="form-control"
+                    value=""
+                    id="task_id_edit">
+                </div>
+                
+                <div class="col-md-10 mb-3">
+                    <label for="task_name_edit" 
+                    class="form-label">Nome da tarefa</label>
+                    <input type="text" required class="form-control" 
+                    id="task_name_edit"
+                    placeholder="Estudar">
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="task_responsible_edit" class="form-label">
+                        Responsável da tarefa                    
+                    </label>
+                    <input type="text" class="form-control" id="task_responsible_edit"
+                    placeholder="Ex: Eu mesmo">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="task_date_edit" class="form-label">Data</label>
+                    <input type="date" class="form-control" id="task_date_edit" value="">
+                </div>
+
+                <div class="col-md-12 mb-3">
+                    <label for="task_description_edit" class="form-label">Descrição</label>
+                    <textarea class="form-control" required id="task_description_edit" rows="2"></textarea>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label for="task_priority_edit" 
+                    class="form-label">Prioridade</label>
+                    <select name="task_priority_edit" id="task_priority_edit" class="form-control">
+                        <option value="#">Selecione...</option>
+                        <option value="1">Baixa</option>
+                        <option value="2">Média</option>
+                        <option value="3">Alta</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="task_status_edit" 
+                    class="form-label">Status</label>
+                    <select name="task_status_edit" id="task_status_edit" class="form-control">
+                        <option value="#">Selecione...</option>
+                        <option value="1">Fazer</option>
+                        <option value="2">Fazendo</option>
+                        <option value="3">Finalizada</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     
     
     

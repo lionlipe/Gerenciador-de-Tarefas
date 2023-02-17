@@ -41,3 +41,7 @@ body {
     color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
     background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
 }
+
+.fa-trash {
+    cursor: pointer;
+}

@@ -16,8 +16,13 @@ function setTaskId() {
 }
 
 function logar() {
+<<<<<<< HEAD
+    const usuario = '1';
+    const senha = '1';
+=======
     const usuario = 'Marcus';
     const senha = '123';
+>>>>>>> 7022b98b1e7ef316e7fce2d37d07afe78dd538a0
 
     var name = document.getElementById('name').value;    
     var pass = document.getElementById('password').value;
@@ -200,5 +205,22 @@ function getStatusName(taskStatus) {
             return 'Finalizada';
         default:
             return 'Não definido';
+<<<<<<< HEAD
+    }
+}
+
+
+let deleteTaskId = ""; 
+
+function deleteTask(task) {
+    deleteTaskId = task;
+    document.getElementById('idTask').innerHTML = task;
+}
+
+function confirmDelete(result) {
+    if (result === 'S') {
+    document.getElementById(idTask).element.remove(idTask);
+=======
+>>>>>>> 7022b98b1e7ef316e7fce2d37d07afe78dd538a0
     }
 }
