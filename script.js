@@ -16,13 +16,8 @@ function setTaskId() {
 }
 
 function logar() {
-<<<<<<< HEAD
     const usuario = '1';
     const senha = '1';
-=======
-    const usuario = 'Marcus';
-    const senha = '123';
->>>>>>> 7022b98b1e7ef316e7fce2d37d07afe78dd538a0
 
     var name = document.getElementById('name').value;    
     var pass = document.getElementById('password').value;
@@ -44,7 +39,7 @@ function logar() {
     } else {
         document.getElementById('name').style.border = "solid 2px red";
         document.getElementById('password').style.border = "solid 2px red";
-        alert('Usuário ou senha incorretos.')
+        alert('Usuário ou senha incorretos.');
     }
 }
 
@@ -82,7 +77,7 @@ function saveTask() {
     this.formatInputs(taskDate, taskPriority, taskStatus);
 
     var taskCard =
-    " <div class='card mb-4 text-left p-3 border-0'> " +
+    " <div class='card mb-4 text-left p-3 border-0' id='card_'> " +
     "   <input class='d-none' id='id_card_"+ taskId +"' value="+ taskId +"> " +
     "   <div class='d-flex align-items-center justify-content-between pb-3'>" +
     "       <div class=''> " +
@@ -171,47 +166,45 @@ function formatInputs(taskDate, taskPriority, taskStatus) {
 
 // Função para pegar texto da prioridade
 function getPriorityName(idPriority) {
-    var priorityName;
-    var classColor;
+        var priorityName;
+        var classColor;
 
-    switch(idPriority) {
-        case '1':
-            priorityName = 'Baixa';
-            classColor   = 'lowPriority';
-            break;
-        case '2':
-            priorityName = 'Media';
-            classColor   = 'mediumPriority';
-            break;
-        case '3':
-            priorityName = 'Alta';
-            classColor   = 'highPriority';
-            break;
-        default:
-            priorityName = 'Não definida';
-            break;
-    }
+        switch(idPriority) {
+            case '1':
+                priorityName = 'Baixa';
+                classColor   = 'lowPriority';
+                break;
+            case '2':
+                priorityName = 'Media';
+                classColor   = 'mediumPriority';
+                break;
+            case '3':
+                priorityName = 'Alta';
+                classColor   = 'highPriority';
+                break;
+            default:
+                priorityName = 'Não definida';
+                break;
+        }
+        
 
-    return "<span class='badge " + classColor + " '> " + priorityName +" </span>";
+        return "<span class='badge " + classColor + " '> " + priorityName +" </span>";
 }
 
 function getStatusName(taskStatus) {
-    switch(taskStatus) {
-        case '1':
-            return 'Fazer';            
-        case '2':
-            return 'Fazendo';            
-        case '3':
-            return 'Finalizada';
-        default:
-            return 'Não definido';
-<<<<<<< HEAD
-    }
+        switch(taskStatus) {
+            case '1':
+                return 'Fazer';            
+            case '2':
+                return 'Fazendo';            
+            case '3':
+                return 'Finalizada';
+            default:
+                return 'Não definido';
+        }
 }
 
-
-let deleteTaskId = ""; 
-
+let deleteTaskId = '';
 function deleteTask(task) {
     deleteTaskId = task;
     document.getElementById('idTask').innerHTML = task;
@@ -219,8 +212,27 @@ function deleteTask(task) {
 
 function confirmDelete(result) {
     if (result === 'S') {
-    document.getElementById(idTask).element.remove(idTask);
-=======
->>>>>>> 7022b98b1e7ef316e7fce2d37d07afe78dd538a0
+        document.getElementById('card_').remove(taskId);
     }
+}
+
+function editTask() {
+    let  taskId          = $('#task_'+ task).val();
+    let  taskName        = $('#task_'+ task).val();
+    let  taskResponsible = $('#task_'+ task).val();
+    let  taskDescription = $('#task_'+ task).val();
+    let  taskDate        = $('#task_'+ task).val();
+    let  taskPriority    = $('#task_'+ task).val();
+    let  taskStatus      = $('#task_'+ task).val();
+
+    const date = taskDate.split("/");
+    let newDate = date[2] + '-' + date[1] + date[0];
+
+    document.getElementById('task_id_edit').value = idCard;
+    document.getElementById('task_name_edit').value = taskName;
+    document.getElementById('task_reponsible_edit').value = taskResponsible;
+    document.getElementById('task_date_edit').value = newDate;
+    document.getElementById('task_description_edit').value = taskDescription;
+    document.getElementById('task_status_edit').selectedIndex = taskStatus;
+    document.getElementById('task_priority_edit').selectedIndex = taskPriority;
 }

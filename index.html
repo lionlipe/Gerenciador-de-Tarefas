@@ -37,19 +37,16 @@
             <div class="row">
                 <div class="col-md-12 text-center d-none p-0" id="new_task">
                     <nav class="navbar bg-light rounded-10">
-                        <div class="container-fluid">
+                        <div class="container-fluid">  
                             <div>
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input class="navbar-brand search" type="search" placeholder="  Pesquisar..." aria-label="Pesquisar">
-                            </div>
-                          <form class="d-flex" role="search">
-                            
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_new_task">
-                                <i class="fa fa-pen-to-square pe-2"></i>
-                                Nova Tarefa</button>
-                          </form>
+                                <i class="fa fa-search"></i>
+                                <input class="navbar-brand search" type="search" placeholder="Pesquisar..." aria-label="Pesquisar">
+                            </div>  
+                            <form class="d-flex" role="search">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_new_task"><i class="fa fa-pen-to-square pe-2"></i> Nova Tarefa</button>
+                            </form>
                         </div>
-                      </nav>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -78,19 +75,23 @@
                         </span>
                     </div>
                     <div class="mt-4">
-                        <div id="doing_card_content"></div>
+                        <div id="doing_card_content">
+
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-4">
                     <div class="text-center">
                         <span>
-                            <i class="fa-solid fa-solid fa-check"></i>
+                            <i class="fa-sharp fa-solid fa-check"></i>
                             FEITO
                         </span>
                     </div>
                     <div class="mt-4">
-                        <div id="done_card_content"></div>
+                        <div id="done_card_content">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +162,7 @@
         </div>
         </div>
     </div>
-
+    
     <div class="modal fade" id="modal_delete_task" 
     tabindex="-1" 
     aria-labelledby="exampleModalLabel" 
@@ -264,7 +265,6 @@
                 </div>
             </div>
         </div>
-    
     
     
     <script src="./script.js"></script>

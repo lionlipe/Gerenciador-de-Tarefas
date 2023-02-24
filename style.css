@@ -38,10 +38,6 @@ body {
     border: none;
     border-bottom: solid 1px #eee;
     font-size: 16px;
-    color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
-    background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity));
-}
-
-.fa-trash {
-    cursor: pointer;
+    color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
+    background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
 }
